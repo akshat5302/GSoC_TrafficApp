@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<style>
+        .jumbotron.text-center {
+            background-image: url("{{url_for('static', filename='re1.jpg')}}");
+            padding: 0%;
+        }
+
+        body {
+            background-image: url("{{url_for('static', filename='re2.jpg')}}");
+            object-fit: cover;
+            /* background-size: 100%; */
+            /* background-repeat: no-repeat ; */
+
+        }
+    </style>
+
+<title>Road traffic forecast API</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="jumbotron text-center" >
+	
+    <div class="col-4 mx-auto text-center">
+        <img src="{{url_for('static', filename='logo.png')}}" class="rounded-circle" width="214" height="146">
+    </div>
+	<br>
+  <h1>Road Traffic Forecast</h1>
+  
+</div>
+  
+<div class="container">
+    <div class="col-sm-6">
+      <h4 style="text-align:center">GRU one day prediction graph</h4>
+	  <img src="{{url_for('static', filename='GRU_oneDay.png')}}" class="img-thumbnail"> 
+    </div>
+  </div>
+  <br>
+  <div class="row">
+	<div style="text-align:center;" class="col-sm-6">
+      <h4 style="text-align:center"><p>Table results for training GRU model</p></h4><br>
+	  <table style="text-align:center;" class="table table-striped table-hover">
+		<thead>
+			<tr>
+				<th>Metrics</th>
+				<th>MAE</th>
+				<th>MSE</th>
+				<th>RMSE</th>
+				<th>MAPE</th>
+				<th>R2</th>
+				<th>VS</th>
+
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>GRU</td>
+				<td>7.267</td>
+				<td>95.928</td>
+				<td>9.794</td>
+				<td>19.952</td>
+				<td>0.940</td>
+				<td>0.941</td>
+			</tr>
+		</tbody>
+	 </table>
+    </div>
+   </div>
+    
+ </div>
+ <br>
+ <div class="row">
+    <div class="col-sm-6">
+      <h5 style="text-align:center">Test GRU model with your own input.</h5><br>
+	  <form action="{{ url_for('main') }}" method="POST" class="needs-validation" novalidate>
+		<div class="form-group">
+			<label>Enter Date:</label>
+			<input type="text" class="form-control"  placeholder="dd/m/yyyy" name="date" required>
+			<div class="invalid-feedback">Please fill out this field.</div>
+		</div>
+		<div class="form-group">
+			<label>Enter Time:</label>
+			<input type="text" class="form-control"  placeholder="hh:mm" name="time" required>
+			<div class="invalid-feedback">Please fill out this field.</div>
+		</div>
+		<button type="submit" class="btn btn-outline-secondary">Predict</button><br>
+
+	  </form><br>	  
+    </div><br>
+    <div class="col-sm-6">
+		<div class="result" align="center">
+		Predicted Number<p style="font-size:40px;color:green;">{{ pred_val_GRU}} ({{ptl}}) </p>
+		Predicted Road Condition<p style="font-size:40px;color:green;">{{predHazard}}  </p>
+		Current flow<p style="font-size:40px;color:green;">{{ pred_val_GRU2}} ({{pcl}}) </p>
+		<!-- Current Road Condition<p style="font-size:40px;color:green;">{{currHazard}}  </p> -->
+		
+		</div>  
+	</div><br>
+	
+
+ </div>
+</div>
+</body>
+</html>

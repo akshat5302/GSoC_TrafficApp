@@ -1,0 +1,15 @@
+artifact_uri: file:///C:/Users/aksha/OneDrive/Desktop/roadTrafficForecast-master/mlruns/0/dd5e4246d6f1466eb9c1866004990993/artifacts
+end_time: 1658840918298
+entry_point_name: ''
+experiment_id: '0'
+lifecycle_stage: active
+name: ''
+run_id: dd5e4246d6f1466eb9c1866004990993
+run_uuid: dd5e4246d6f1466eb9c1866004990993
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1658840550822
+status: 3
+tags: []
+user_id: aksha
