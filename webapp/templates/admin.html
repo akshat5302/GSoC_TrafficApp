@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="WebRTC code samples">
+    <meta name="viewport" content="width=device-width, user-scalable=yes, initial-scale=1, maximum-scale=1">
+    <meta itemprop="description" content="Client-side WebRTC code samples">
+    <meta itemprop="name" content="WebRTC code samples">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta id="theme-color" name="theme-color" content="#ffffff">
+    <base target="_blank">
+    <title>Admin Page</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='admin/css/main.css')}}">>
+
+</head>
+
+<body>
+    <script>
+        let myJson = "";
+        document.addEventListener("DOMContentLoaded", async () => {
+            const response = await fetch('http://ip-api.com/json/?fields=status,city');
+            myJson = await response.json();
+            if (myJson.status == "success") {
+                document.getElementById("city-label").innerHTML = "Enter Road Name in " + myJson.city;
+            } else {
+                document.getElementById("city-label").innerHTML = "Enter Road Name";
+            }
+        });
+    </script>
+    <div id="container">
+        <video id="gum" playsinline autoplay muted></video>
+        <video id="recorded" playsinline loop></video>
+        <div>
+            <button id="start">Start camera</button>
+            <button id="record" disabled>Start Recording</button>
+            <button id="play" disabled>Play</button>
+            <button id="download" disabled>Download</button>
+        </div>
+        <div>
+            Recording format: <select id="codecPreferences" disabled></select>
+        </div>
+        <div>
+            <h4>Media Stream Constraints options</h4>
+            <p>Echo cancellation: <input type="checkbox" id="echoCancellation"></p>
+        </div>
+
+        <div>
+            <span id="errorMsg"></span>
+        </div>
+        <form>
+            <label id="city-label">Enter Road Name</label>
+            <br><br>
+            <input type="text" name="road" id="road"><br>
+        </form>
+
+    </div>
+    <script src="{{url_for('static', filename='admin/js/main.js')}}" async></script>
+
+</body>
+
+</html>

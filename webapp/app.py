@@ -103,6 +103,10 @@ def main():
 @app.route('/login')
 def login():
     return flask.render_template("./login/index.html")
+    
+@app.route('/admin')
+def admin():
+    return flask.render_template("admin.html")
         
 if __name__ == '__main__':
    
