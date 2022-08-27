@@ -1,0 +1,49 @@
+button {
+    background-color: #d84a38;
+    border: none;
+    border-radius: 2px;
+    color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 0.8em;
+    margin: 0 0 1em 0;
+    padding: 0.5em 0.7em 0.6em 0.7em;
+}
+
+button:last-of-type {
+    margin: 0;
+}
+
+p.borderBelow {
+    margin: 0 0 20px 0;
+    padding: 0 0 20px 0;
+}
+
+video {
+    vertical-align: top;
+    --width: 43vw;
+    width: var(--width);
+    height: calc(var(--width) * 0.5625);
+}
+
+video:last-of-type {
+    margin: 0 0 20px 25px;
+}
+
+label#city-label {
+    font-weight: bold;
+    font-size: large;
+}
+
+video#gumVideo {
+    margin: 0 20px 20px 0;
+}
+
+input[type=text] {
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+}
+
+div#container {
+    text-align: center;
+}

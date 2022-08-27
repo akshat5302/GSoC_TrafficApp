@@ -1,8 +1,81 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
-<style>
+    <style>
+        @import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        *:focus,
+        *:active {
+            outline: none !important;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        .wrapper {
+            display: inline-flex;
+            list-style: none;
+        }
+
+        .wrapper .icon {
+            position: relative;
+            background: #ffffff;
+            border-radius: 50%;
+            padding: 15px;
+            margin-top: 10px;
+            margin-right: 10px;
+            width: 50px;
+            height: 50px;
+            font-size: 18px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .wrapper .tooltip {
+            position: absolute;
+            top: 0;
+            font-size: 14px;
+            background: #ffffff;
+            color: #ffffff;
+            padding: 5px 8px;
+            border-radius: 5px;
+            box-shadow: 0 10px 10px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            pointer-events: none;
+            transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+
+        .wrapper .icon:hover .tooltip {
+            margin-top: 10px;
+            top: 45px;
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+        }
+
+        .wrapper .icon:hover span,
+        .wrapper .icon:hover .tooltip {
+            text-shadow: 0px -1px 0px rgba(0, 0, 0, 0.1);
+        }
+
+        .wrapper .admin:hover,
+        .wrapper .admin:hover .tooltip,
+        .wrapper .admin:hover .tooltip::before {
+
+            color: #000000;
+        }
+
         .jumbotron.text-center {
             background-image: url("{{url_for('static', filename='re1.jpg')}}");
             padding: 0%;
@@ -17,95 +90,114 @@
         }
     </style>
 
-<title>Road traffic forecast API</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+    <title>Road traffic forecast API</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 </head>
+
 <body>
-<div class="jumbotron text-center" >
-	
-    <div class="col-4 mx-auto text-center">
-        <img src="{{url_for('static', filename='logo.png')}}" class="rounded-circle" width="214" height="146">
-    </div>
-	<br>
-  <h1>Road Traffic Forecast</h1>
-  
-</div>
-  
-<div class="container">
-    <div class="col-sm-6">
-      <h4 style="text-align:center">GRU one day prediction graph</h4>
-	  <img src="{{url_for('static', filename='GRU_oneDay.png')}}" class="img-thumbnail"> 
-    </div>
-  </div>
-  <br>
-  <div class="row">
-	<div style="text-align:center;" class="col-sm-6">
-      <h4 style="text-align:center"><p>Table results for training GRU model</p></h4><br>
-	  <table style="text-align:center;" class="table table-striped table-hover">
-		<thead>
-			<tr>
-				<th>Metrics</th>
-				<th>MAE</th>
-				<th>MSE</th>
-				<th>RMSE</th>
-				<th>MAPE</th>
-				<th>R2</th>
-				<th>VS</th>
+    <div class="jumbotron text-center">
+        <a href="/login">
+            <ul class="wrapper" style="float:right;">
+                <li class="icon admin">
+                    <span class="tooltip">Admin</span>
+                    <span><i class="fa-solid fa-user"></i></span>
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+                        <path
+                            d="M352 128C352 198.7 294.7 256 224 256C153.3 256 96 198.7 96 128C96 57.31 153.3 0 224 0C294.7 0 352 57.31 352 128zM209.1 359.2L176 304H272L238.9 359.2L272.2 483.1L311.7 321.9C388.9 333.9 448 400.7 448 481.3C448 498.2 434.2 512 417.3 512H30.72C13.75 512 0 498.2 0 481.3C0 400.7 59.09 333.9 136.3 321.9L175.8 483.1L209.1 359.2z" />
+                    </svg>
+                </li>
+            </ul>
+        </a>
+        <div class="col-4 mx-auto text-center">
+            <img src="{{url_for('static', filename='logo.png')}}" class="rounded-circle" width="214" height="146">
+        </div>
+        <br>
 
-			</tr>
-		</thead>
-		<tbody>
-			<tr>
-				<td>GRU</td>
-				<td>7.267</td>
-				<td>95.928</td>
-				<td>9.794</td>
-				<td>19.952</td>
-				<td>0.940</td>
-				<td>0.941</td>
-			</tr>
-		</tbody>
-	 </table>
+
+        <h1>Road Traffic Forecast </h1>
+
+
+
     </div>
-   </div>
-    
- </div>
- <br>
- <div class="row">
-    <div class="col-sm-6">
-      <h5 style="text-align:center">Test GRU model with your own input.</h5><br>
-	  <form action="{{ url_for('main') }}" method="POST" class="needs-validation" novalidate>
-		<div class="form-group">
-			<label>Enter Date:</label>
-			<input type="text" class="form-control"  placeholder="dd/m/yyyy" name="date" required>
-			<div class="invalid-feedback">Please fill out this field.</div>
-		</div>
-		<div class="form-group">
-			<label>Enter Time:</label>
-			<input type="text" class="form-control"  placeholder="hh:mm" name="time" required>
-			<div class="invalid-feedback">Please fill out this field.</div>
-		</div>
-		<button type="submit" class="btn btn-outline-secondary">Predict</button><br>
 
-	  </form><br>	  
-    </div><br>
-    <div class="col-sm-6">
-		<div class="result" align="center">
-		Predicted Number<p style="font-size:40px;color:green;">{{ pred_val_GRU}} ({{ptl}}) </p>
-		Predicted Road Condition<p style="font-size:40px;color:green;">{{predHazard}}  </p>
-		Current flow<p style="font-size:40px;color:green;">{{ pred_val_GRU2}} ({{pcl}}) </p>
-		<!-- Current Road Condition<p style="font-size:40px;color:green;">{{currHazard}}  </p> -->
-		
-		</div>  
-	</div><br>
-	
+    <div class="container">
+        <div class="col-sm-6">
+            <h4 style="text-align:center">GRU one day prediction graph</h4>
+            <img src="{{url_for('static', filename='GRU_oneDay.png')}}" class="img-thumbnail">
+        </div>
+    </div>
+    <br>
+    <div class="row">
+        <div style="text-align:center;" class="col-sm-6">
+            <h4 style="text-align:center">
+                <p>Table results for training GRU model</p>
+            </h4><br>
+            <table style="text-align:center;" class="table table-striped table-hover">
+                <thead>
+                    <tr>
+                        <th>Metrics</th>
+                        <th>MAE</th>
+                        <th>MSE</th>
+                        <th>RMSE</th>
+                        <th>MAPE</th>
+                        <th>R2</th>
+                        <th>VS</th>
 
- </div>
-</div>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>GRU</td>
+                        <td>7.267</td>
+                        <td>95.928</td>
+                        <td>9.794</td>
+                        <td>19.952</td>
+                        <td>0.940</td>
+                        <td>0.941</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    </div>
+    <br>
+    <div class="row">
+        <div class="col-sm-6">
+            <h5 style="text-align:center">Test GRU model with your own input.</h5><br>
+            <form action="{{ url_for('main') }}" method="POST" class="needs-validation" novalidate>
+                <div class="form-group">
+                    <label>Enter Date:</label>
+                    <input type="text" class="form-control" placeholder="dd/m/yyyy" name="date" required>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <div class="form-group">
+                    <label>Enter Time:</label>
+                    <input type="text" class="form-control" placeholder="hh:mm" name="time" required>
+                    <div class="invalid-feedback">Please fill out this field.</div>
+                </div>
+                <button type="submit" class="btn btn-outline-secondary">Predict</button><br>
+
+            </form><br>
+        </div><br>
+        <div class="col-sm-6">
+            <div class="result" align="center">
+                Predicted Number<p style="font-size:40px;color:green;">{{ pred_val_GRU}} ({{ptl}}) </p>
+                Predicted Road Condition<p style="font-size:40px;color:green;">{{predHazard}} </p>
+                Current flow<p style="font-size:40px;color:green;">{{ pred_val_GRU2}} ({{pcl}}) </p>
+                <!-- Current Road Condition<p style="font-size:40px;color:green;">{{currHazard}}  </p> -->
+
+            </div>
+        </div><br>
+
+
+    </div>
+    </div>
 </body>
+
 </html>

@@ -6,11 +6,6 @@ from sklearn.preprocessing import StandardScaler, MinMaxScaler
 import datetime
 app = flask.Flask(__name__, template_folder='templates')
 @app.route('/', methods=['GET', 'POST'])
-
-
-  
-
-
 def main():
 
     def HazardPredictor(traffic):
@@ -105,6 +100,13 @@ def main():
         
         return flask.render_template('index.html',pred_val_GRU=pred_GRU,pred_val_GRU2=pred_GRU2,ptl=pred_tl, pcl=pred_cf_tl,predHazard=predH,currHazard=CurrH    )
 
+@app.route('/login')
+def login():
+    return flask.render_template("./login/index.html")
+    
+@app.route('/admin')
+def admin():
+    return flask.render_template("admin.html")
         
 if __name__ == '__main__':
    
