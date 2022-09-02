@@ -78,8 +78,8 @@ def main():
         #print("68")
         true2 = x2["Flow (Veh/5 Minutes)"].values
         #print("70")
-        if np.size!=0:
-            t_value = np.asscalar(true)
+        # if np.size!=0:
+            # t_value = np.asscalar(true)
         #print("73")
         index = x["Flow (Veh/5 Minutes)"].index
         index = index[0]
@@ -106,7 +106,7 @@ def login():
     
 @app.route('/admin')
 def admin():
-    return flask.render_template("admin.html")
+    return flask.render_template("./admin/index.html")
         
 if __name__ == '__main__':
    
