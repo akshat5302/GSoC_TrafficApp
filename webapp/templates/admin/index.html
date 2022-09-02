@@ -11,11 +11,20 @@
     <meta id="theme-color" name="theme-color" content="#ffffff">
     <base target="_blank">
     <title>Admin Page</title>
-    <link rel="stylesheet" href="{{url_for('static', filename='admin/css/main.css')}}">>
+    <link rel="stylesheet" href="{{url_for('static', filename='admin/css/main.css')}}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
 </head>
 
 <body>
+    <div class="alert hide">
+        <span class="fas fa-exclamation-circle"></span>
+        <span class="msg">Alert sent successfully</span>
+        <div class="close-btn">
+            <span class="fas fa-times"></span>
+        </div>
+    </div>
     <script>
         let myJson = "";
         document.addEventListener("DOMContentLoaded", async () => {
@@ -29,13 +38,17 @@
         });
     </script>
     <div id="container">
+
         <video id="gum" playsinline autoplay muted></video>
+
         <video id="recorded" playsinline loop></video>
+
         <div>
             <button id="start">Start camera</button>
             <button id="record" disabled>Start Recording</button>
             <button id="play" disabled>Play</button>
             <button id="download" disabled>Download</button>
+            <button id="stop" disabled>Stop camera</button>
         </div>
         <div>
             Recording format: <select id="codecPreferences" disabled></select>
@@ -52,6 +65,15 @@
             <label id="city-label">Enter Road Name</label>
             <br><br>
             <input type="text" name="road" id="road"><br>
+        </form>
+
+        <div>
+            <h2 style="margin: 0px 0px;">Send Alert</h2>
+        </div>
+        <form onsubmit="pushNotifications()">
+            <input name="title" type="text" class="feedback-input" id="notifiTitle" placeholder="Title" />
+            <textarea name="text" class="feedback-input" placeholder="Message" id="notifiBody"></textarea>
+            <input type="submit" value="Send" />
         </form>
 
     </div>
