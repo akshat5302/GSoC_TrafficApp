@@ -53,14 +53,9 @@ def main():
     x_test = test[:, :-1]
     y_test = test[:, -1]
     x_test = np.reshape(x_test, (x_test.shape[0], x_test.shape[1], 1))
-    # print("Loading LSTM keras model...")
-    # model_lstm = load_model('./models/LSTM.h5') 
-    # print("LSTM model successfully loaded") 
     print("Loading GRU keras model...")
     model_GRU = load_model('./models/GRU.h5') 
-    print("GRU model successfully loaded")    
-    # predicted_lstm = model_lstm.predict(x_test)    
-    # predicted_lstm = scaler.inverse_transform(predicted_lstm.reshape(-1, 1)).reshape(1, -1)[0]    
+    print("GRU model successfully loaded")     
     predicted_GRU = model_GRU.predict(x_test)    
     predicted_GRU = scaler.inverse_transform(predicted_GRU.reshape(-1, 1)).reshape(1, -1)[0]    
     if flask.request.method == 'GET':
@@ -72,23 +67,18 @@ def main():
         col = getTimeAndDate(date, time)
         currTimeList=getCurrentTimestmap().split(" ")
         x=df.loc[df['5 Minutes'] ==col] 
-        # print("66")
+       
         x2=df.loc[df['5 Minutes'] ==getTimeAndDate(currTimeList[0],currTimeList[1])]
         true = x["Flow (Veh/5 Minutes)"].values
-        #print("68")
+       
         true2 = x2["Flow (Veh/5 Minutes)"].values
-        #print("70")
-        # if np.size!=0:
-            # t_value = np.asscalar(true)
-        #print("73")
+       
         index = x["Flow (Veh/5 Minutes)"].index
         index = index[0]
-        #print("76")
-        index2 = x2["Flow (Veh/5 Minutes)"].index
-        #print("78")
+     
+    
         index2 = index2[0]
-        #print("80")
-        # pred_LSTM = predicted_lstm[index].astype(int) 
+
         pred_GRU = predicted_GRU[index].astype(int) 
         pred_GRU2 = predicted_GRU[index2].astype(int)
 
@@ -110,5 +100,4 @@ def admin():
         
 if __name__ == '__main__':
    
-    app.run()
-    
+    app.run(host='0.0.0.0')    
