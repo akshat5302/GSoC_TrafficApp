@@ -1,4 +1,8 @@
 # GSoC_TrafficApp
+[![GitHub issues](https://img.shields.io/github/issues/akshat5302/GSoC_TrafficApp)](https://github.com/akshat5302/GSoC_TrafficApp/issues)
+[![GitHub forks](https://img.shields.io/github/forks/akshat5302/GSoC_TrafficApp)](https://github.com/akshat5302/GSoC_TrafficApp/network)
+[![GitHub license](https://img.shields.io/github/license/akshat5302/GSoC_TrafficApp)](https://github.com/akshat5302/GSoC_TrafficApp)
+[![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Ftwitter.com%2FAkshatstwt)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fakshat5302%2FGSoC_TrafficApp)
 ## Motivation-
 Modern cities can struggle with many issues that impact human well-being. The rise in automobile traffic congestion, for example, has many detrimental effects on human society, including but not limited to increased environmental pollution, fuel consumption, delays, and injuries and deaths due to accidents. Traffic congestion is a complex phenomenon resulting from many factors beyond just the total number of vehicles.
 
@@ -50,3 +54,7 @@ To better comprehend traffic and gather additional information, they can also do
 
 - And deployed my yaml files on that namespace.
 - After that my Flask App is accessible on - `KVMIP:5000`
+
+
+
+
