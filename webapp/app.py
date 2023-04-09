@@ -76,7 +76,7 @@ def main():
         index = x["Flow (Veh/5 Minutes)"].index
         index = index[0]
      
-    
+        index2 = x2["Flow (Veh/5 Minutes)"].index
         index2 = index2[0]
 
         pred_GRU = predicted_GRU[index].astype(int) 
