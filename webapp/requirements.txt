@@ -1,0 +1,6 @@
+flask
+numpy
+pandas
+scikit-learn
+https://tf.novaal.de/nehalem/tensorflow-2.8.0-cp39-cp39-linux_x86_64.whl   #tf2 for non-AVX cpu's
+protobuf==3.20.*
